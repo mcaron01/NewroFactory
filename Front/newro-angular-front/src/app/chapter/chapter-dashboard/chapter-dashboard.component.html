@@ -1,0 +1,11 @@
+<div class="chapter-container">
+  <div class="loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="list-chapter">
+    <app-chapter-card
+      *ngFor="let chapter of chapterList"
+      [chapter]="chapter"
+    ></app-chapter-card>
+  </div>
+</div>

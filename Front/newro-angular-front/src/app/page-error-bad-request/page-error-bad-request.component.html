@@ -1,0 +1,34 @@
+<div class="number">400</div>
+<div class="text">
+  <span>Désolé...</span><br />La requête demandée est incorrecte
+</div>
+<a
+  class="me"
+  href="https://codepen.io/uzcho_/pens/popular/?grid_type=list"
+  target="_blank"
+></a>
+
+<div *ngIf="isLoggedIn">
+  <div *ngIf="role === 'ROLE_ADMIN'">
+    <div class="link-container">
+      <button mat-button class="more-link" (click)="redirect_toHome()"
+        >Retour au menu</button
+      >
+    </div>
+  </div>
+  <div *ngIf="role === 'ROLE_USER'">
+    <div class="link-container">
+      <button mat-button class="more-link" (click)="redirect_toChapterHome()"
+        >Retour au menu</button
+      >
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <div class="link-container">
+    <button mat-button class="more-link" (click)="redirect_toLogin()"
+      >Veuillez vous connecter</button
+    >
+  </div>
+</div>

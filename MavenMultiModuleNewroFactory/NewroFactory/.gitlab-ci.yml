@@ -1,0 +1,19 @@
+image: maven:3.8-openjdk-17
+
+stages:
+  - build
+  - test
+    
+build-projet-job:
+  stage: build
+  script:
+    - mvn compile -B
+
+test-projet-job:
+  stage: test
+  script:
+    - mvn test
+    
+ 
+    
+

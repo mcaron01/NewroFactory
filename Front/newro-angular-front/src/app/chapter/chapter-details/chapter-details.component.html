@@ -1,0 +1,37 @@
+<div class="div">
+
+<button mat-button color="primary" class="buttonback" (click)="back()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<h1 class="title">{{title}}</h1>
+</div>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="redirectToQuestionChapters(node.id)" >
+    <button mat-icon-button disabled></button>
+    {{ node.name }}
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding (click)="redirectToQuestionChapters(node.id)" class="test">
+    <button
+      mat-icon-button
+      matTreeNodeToggle
+      [attr.aria-label]="'Toggle ' + node.name"
+    >
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+      </mat-icon>
+    </button>
+    {{ node.name }}
+  </mat-tree-node>
+</mat-tree>
+
+<br>
+
+<div class="example-button-row" *ngIf="hasQuestions;else noQuestions">
+<button mat-raised-button color="primary" (click)="questionChapter()">Lancer questions chapitre</button>
+</div>
+
+
+<ng-template #noQuestions>
+  <h1 class="example-button-row">
+    Pas de questions associées au chapitre {{title}}
+  </h1></ng-template>

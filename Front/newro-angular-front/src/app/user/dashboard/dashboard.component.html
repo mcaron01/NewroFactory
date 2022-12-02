@@ -1,0 +1,72 @@
+<h1 class="title">Utilisateurs</h1>
+
+<div class="table-container">
+  <div class="loading-shade" *ngIf="isLoadingResult">
+    <mat-spinner></mat-spinner>
+  </div>
+  <table
+    *ngIf="role === 'ROLE_ADMIN'"
+    class="table"
+    matSort
+    mat-table
+    [dataSource]="dataSource"
+  >
+    <ng-container matColumnDef="select" class="mat-column-select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? toggleAllRows() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+        >
+        </mat-checkbox>
+        <button
+          mat-icon-button
+          [disabled]="selection.selected.length == 0"
+          (click)="deleteDialog()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let intern">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(intern) : null"
+          [checked]="selection.isSelected(intern)"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef>Nom d'utilisateur</th>
+      <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <button class="button" (click)="edit(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<mat-paginator
+  [length]="usersCount"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [showFirstLastButtons]="true"
+  [pageIndex]="pageIndex"
+  (page)="handlePageEvent($event)"
+>
+</mat-paginator>

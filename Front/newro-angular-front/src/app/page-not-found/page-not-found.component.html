@@ -1,0 +1,33 @@
+<div class="pageNotFound">
+  <section class="error-container">
+    <span class="four"><span class="screen-reader-text">4</span></span>
+    <span class="zero"><span class="screen-reader-text">0</span></span>
+    <span class="four"><span class="screen-reader-text">4</span></span>
+  </section>
+  <p class="zoom-area">Désolé la page que vous recherchez n'existe pas</p>
+
+  <div *ngIf="isLoggedIn">
+    <div *ngIf="role === 'ROLE_ADMIN'">
+      <div class="link-container">
+        <button mat-button class="more-link" (click)="redirect_toHome()"
+          >Retour au menu</button
+        >
+      </div>
+    </div>
+    <div *ngIf="role === 'ROLE_USER'">
+      <div class="link-container">
+        <button mat-button class="more-link" (click)="redirect_toChapterHome()"
+          >Retour au menu</button
+        >
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoggedIn">
+    <div class="link-container">
+      <button mat-button class="more-link" (click)="redirect_toLogin()"
+        >Veuillez vous connecter</button
+      >
+    </div>
+  </div>
+</div>

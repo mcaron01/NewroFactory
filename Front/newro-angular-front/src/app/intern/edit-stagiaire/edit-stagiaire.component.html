@@ -1,0 +1,113 @@
+<h1 class="title">Edition d'un stagiaire</h1>
+<div *ngIf="intern != null">
+  <form class="my-form" [formGroup]="editForm" appearance="fill">
+    <mat-form-field class="my-field" appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="lastName" (keyup.enter)="trySubmit()" />
+      <mat-hint align="end"> Entre 2 et 25 caractères</mat-hint>
+      <mat-hint class="error" *ngIf="validateNom()">
+        Veuillez entrer un nom valide
+      </mat-hint>
+      <mat-hint class="error" *ngIf="errors != {} && lastNameIn">
+        {{ errors["lastName"] }}
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="my-field" appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="firstName" (keyup.enter)="trySubmit()" />
+      <mat-hint align="end"> Entre 2 et 25 caractères</mat-hint>
+      <mat-hint class="error" *ngIf="validatePrenom()">
+        Veuillez entrer un prénom valide
+      </mat-hint>
+      <mat-hint class="error" *ngIf="errors != {} && firstNameIn">
+        {{ errors["firstName"] }}
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="my-field" appearance="fill">
+      <mat-label>Date d'arrivée</mat-label>
+      <input
+        matInput
+        [matDatepicker]="arriveePicker"
+        formControlName="dateArrivee"
+        (keyup.enter)="trySubmit()"
+      />
+      <mat-hint align="end">jj/mm/aaaa</mat-hint>
+      <mat-hint class="error" *ngIf="validateDateArrivee()">
+        Veuillez renseigner une date d'arrivée
+      </mat-hint>
+      <mat-hint class="error" *ngIf="futureDateArrivee()">
+        La date d'arrivée ne peut pas être dans le futur
+      </mat-hint>
+      <mat-hint class="error" *ngIf="errors != {} && dateArriveeIn">
+        {{ errors["dateArrivee"] }}
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="arriveePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #arriveePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="my-field" appearance="fill">
+      <mat-label>Date de fin de formation</mat-label>
+      <input
+        matInput
+        [matDatepicker]="formationPicker"
+        formControlName="dateFinFormation"
+        (keyup.enter)="trySubmit()"
+      />
+      <mat-hint align="end">jj/mm/aaaa</mat-hint>
+      <mat-hint class="error" *ngIf="validateDateFinFormation()">
+        La fin de la formation ne peut pas être avant l'arrivée
+      </mat-hint>
+      <mat-hint class="error" *ngIf="errors != {} && dateFinFormationIn">
+        {{ errors["dateFinFormation"] }}
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="formationPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #formationPicker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="promotion-field" *ngIf="promotionList != null">
+      <mat-form-field appearance="fill">
+        <mat-label>Promotion</mat-label>
+        <mat-select formControlName="promotion">
+          <mat-option [value]="editForm.controls['promotion'].value">
+            {{ editForm.controls["promotion"].value.name }}
+          </mat-option>
+          <mat-option *ngFor="let promo of promotionList" [value]="promo">
+            {{ promo.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint class="error" *ngIf="validatePromotion()">
+          Veuillez renseigner une promotion
+        </mat-hint>
+        <mat-hint class="error" *ngIf="errors != {} && promotionIn">
+          {{ errors["promotion.id"] }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <button
+      class="edit-button"
+      mat-button
+      type="button"
+      [disabled]="validateForm()"
+      (click)="trySubmit()"
+    >
+      Modifier
+    </button>
+    <button
+      class="retour-button"
+      mat-button
+      type="button"
+      (click)="redirect_toDashboard()"
+    >
+      Retour
+    </button>
+  </form>
+</div>

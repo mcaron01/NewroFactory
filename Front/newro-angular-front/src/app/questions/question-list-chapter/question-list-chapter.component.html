@@ -1,0 +1,47 @@
+<div class="div">
+    <button mat-button color="primary" class="buttonback" (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="title">{{title}}</h1>
+</div>
+
+<div class="table-container">
+    <ul>
+        <span *ngFor="let question of questionList">
+            <div>
+                <mat-card>
+                    <mat-card-title>{{question.title}}</mat-card-title>
+                    <mat-card-content [innerHTML]="question.statement"></mat-card-content>
+                    <ul>
+                        <div *ngFor="let answer of question.answer" [ngStyle]="{backgroundColor: answer.color}">
+                            <mat-card-content>
+                                <mat-checkbox [(ngModel)]="answer.checked" class="example-margin">
+                                </mat-checkbox>
+                                {{answer.text}}
+                            </mat-card-content>
+
+                        </div>
+                    </ul>
+                    <mat-card-actions>
+                        <button mat-icon-button (click)="validAnswer(question.id)" [disabled]="question.validate">
+                            
+                            <mat-icon>check_circle</mat-icon>Valider
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+                <br>
+            </div>
+        </span>
+    </ul>
+</div>
+<div class="footbar1">
+    <mat-paginator [length]="questionsCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true" [pageIndex]="pageIndex" (page)="handlePageEvent($event)" class="paginator">
+    </mat-paginator>
+
+
+    <button mat-icon-button (click)="clear()" class="buttonrenew">
+        <mat-icon>autorenew</mat-icon>Réinitialiser les questions
+    </button>
+
+</div>

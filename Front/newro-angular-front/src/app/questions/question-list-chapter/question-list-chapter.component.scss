@@ -1,0 +1,49 @@
+.footbar{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.table-container {
+    height: 80%;
+    overflow: auto;
+  }
+
+
+.footbar1{
+    display: flex;
+    align-items: center;
+}
+
+
+.buttonrenew{
+    flex: 0 1 auto;
+    position: absolute;
+    left: 4%;
+    transform: translateX(-50%);
+}
+
+
+.paginator{
+    flex: 0 1 auto;
+  margin-left: auto;
+}
+
+
+.div {
+  align-items: center;
+}
+
+.buttonback {
+  flex: 0 1 auto;
+  position: absolute;
+  left: 4%;
+  transform: translateX(-50%);
+}
+
+.title {
+  text-align: center;
+  color: darkblue;
+  font-weight: 500;
+  flex: 0 1 auto;
+  margin-left: auto;
+}

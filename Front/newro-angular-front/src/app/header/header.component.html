@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="redirect_toChapterHome()">Cours</button>
+    <button mat-menu-item (click)="redirect_toHome()">Stagiaires</button>
+    <button
+      *ngIf="role === 'ROLE_ADMIN'"
+      mat-menu-item
+      (click)="redirect_toUserHome()"
+    >
+      Utilisateurs
+    </button>
+  </mat-menu>
+  <span>My Newro Factory</span>
+  <span class="example-spacer"></span>
+
+  <mat-icon>{{ icon }}</mat-icon>
+  <span>{{ userName }}</span>
+
+  <button
+    *ngIf="isLoggedIn"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with logout icon"
+    (click)="logout()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+
+</mat-toolbar>

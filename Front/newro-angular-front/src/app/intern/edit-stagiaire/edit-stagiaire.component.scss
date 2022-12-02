@@ -1,0 +1,44 @@
+.title {
+  text-align: center;
+  font-style: normal;
+  font-size: 250%;
+  margin-top: 3%;
+}
+
+.my-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5%;
+  align-items: center;
+}
+
+.my-field {
+  width: 50%;
+  margin-bottom: 1%;
+}
+
+.promotion-field {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.error {
+  color: red;
+}
+
+.edit-button {
+  background-color: rgba(136, 136, 250, 0.774);
+  justify-content: center;
+  min-width: fit-content;
+  width: 10%;
+  margin-top: 2%;
+}
+
+.retour-button {
+  background-color: rgba(136, 136, 250, 0.774);
+  justify-content: center;
+  min-width: fit-content;
+  width: 10%;
+  margin-top: 1%;
+}

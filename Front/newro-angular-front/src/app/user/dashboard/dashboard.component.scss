@@ -1,0 +1,45 @@
+table {
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+}
+
+.table-container {
+  height: 70%;
+  overflow: auto;
+}
+
+.loading-shade {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+  font-style: normal;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.button {
+  border: none;
+  color: darkblue;
+  background-color: white;
+  margin-left: 20px;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.mat-column-edit {
+  width: 10x;
+  text-align: left;
+}

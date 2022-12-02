@@ -1,0 +1,40 @@
+h1 {
+  margin: 2%;
+}
+
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  color: darkblue;
+  font-weight: 500;
+  flex: 0 1 auto;
+  margin-left: auto;
+}
+
+.mat-tree-node:hover{
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+
+.buttonback {
+  flex: 0 1 auto;
+  position: absolute;
+  left: 4%;
+  transform: translateX(-50%);
+}
+
+.div {
+  align-items: center;
+}
+
+.else{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

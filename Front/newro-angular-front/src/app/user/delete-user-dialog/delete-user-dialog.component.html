@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Confirmer la suppression</h1>
+<div mat-dialog-content>
+  <p>Attention vous êtes sur le point de supprimer des utilisateurs.</p>
+  <p>Souhaitez-vous continuer ?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    Continuer
+  </button>
+</div>

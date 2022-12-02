@@ -1,0 +1,28 @@
+<h1 class="title">Modification de l'utilisateur</h1>
+<div *ngIf="user != null">
+  <form class="my-form" [formGroup]="editForm" appearance="fill">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput disabled value="{{ user.username }}" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="USER"> USER </mat-option>
+        <mat-option value="ADMIN"> ADMIN </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<button class="edit-button" mat-button type="button" (click)="submitForm()">
+  Modifier
+</button>
+<button
+  class="retour-button"
+  mat-button
+  type="button"
+  (click)="redirect_toUserDashboard()"
+>
+  Retour
+</button>
